@@ -9,6 +9,7 @@ terraform {
 
 locals {
   project_name = "witek_server"
+  ami = "ami-05ff5eaef6149df49"
 }
 
 variable "instance_type" {
@@ -27,7 +28,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "witek_server" {
-  ami           = "ami-05ff5eaef6149df49"
+  ami           = local.ami
   instance_type = var.instance_type
 
   tags = {
